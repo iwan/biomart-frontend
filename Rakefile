@@ -20,7 +20,7 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
   Capybara.javascript_driver = :poltergeist
   t.lib_files = FileList[
     "vendor/jquery-*.js",
-    "vendor/underscore.js",
+    "vendor/loadash.js",
     "vendor/backbone.js",
     "vendor/**/*.js",
     "app/bmf.js",
