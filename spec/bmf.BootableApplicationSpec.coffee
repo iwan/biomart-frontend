@@ -1,4 +1,4 @@
-describe "mb.BootableApplication", ->
+describe "bmf.BootableApplication", ->
   it "should say hello when booted", ->
     element = $("<div>")
     app = new bmf.BootableApplication(element)
