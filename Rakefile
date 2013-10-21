@@ -10,8 +10,8 @@ rule '.js' => '.coffee' do |t|
   File.write(t.name, CoffeeScript.compile(File.read(t.source)))
 end
 
-CLEAN.include "app/**/*.js"
-CLEAN.include "spec/**/*.js"
+CLEAN.include "app/*.js"
+CLEAN.include "spec/*.js"
 FileList['**/*.coffee'].ext('js').each do |f|
   task :coffee => f
 end
@@ -22,12 +22,12 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
     "vendor/jquery-*.js",
     "vendor/lodash.js",
     "vendor/backbone.js",
-    "vendor/**/*.js",
+    "vendor/*.js",
     "app/bmf.js",
-    "app/**/*.js",
+    "app/*.js",
     "spec/SpecHelper.js"
   ].uniq
-  t.spec_files = FileList["spec/**/*Spec.js"]
+  t.spec_files = FileList["spec/*Spec.js"]
 end
 
 task :test => ['coffee', 'spec']
