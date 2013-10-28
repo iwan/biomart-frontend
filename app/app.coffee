@@ -1,4 +1,4 @@
-class bmf.BootableApplication
+class bmf.App
   constructor: (@$el) ->
     router = new GeneRetrievalRouter $el: @$el
     Backbone.history.start pushState: true if !Backbone.History.started
