@@ -4,7 +4,7 @@ describe 'Home Page View', ->
 
   beforeEach ->
     model = new Backbone.Model { id: 1 }
-    view =  new bmf.HomeView model: model
+    view =  new bmf.views.HomeView model: model
     view.render()
 
   it "has a link to Gene Retrieval", ->
