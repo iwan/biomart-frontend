@@ -1,10 +1,10 @@
-describe "bmf.BootableApplication", ->
+describe "bmf.App", ->
   root = null
   app  = null
 
   beforeEach ->
     root = $("<div>")
-    app = new bmf.BootableApplication(root)
+    app = new bmf.App(root)
 
   it "should say hello to human gene", ->
     Backbone.history.navigate "gene_retrieval/human", trigger: true

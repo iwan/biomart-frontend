@@ -25,9 +25,9 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
     "vendor/*.js",
     "app/bmf.js",
     "app/*.js",
-    "spec/SpecHelper.js"
+    "spec/spec_helper.js"
   ].uniq
-  t.spec_files = FileList["spec/*Spec.js"]
+  t.spec_files = FileList["spec/*spec.js"]
 end
 
 task :test => ['coffee', 'spec']
