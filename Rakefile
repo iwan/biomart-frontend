@@ -23,7 +23,7 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
     "vendor/lodash.js",
     "vendor/backbone.js",
     "vendor/*.js",
-    "app/bmf.js",
+    "app/namespace.js",
     "app/*.js",
     "spec/spec_helper.js"
   ].uniq

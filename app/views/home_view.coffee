@@ -1,4 +1,4 @@
-class bmf.HomeView extends Backbone.View
+class bmf.views.HomeView extends Backbone.View
 
   template: Mustache.compile """
     <ul>
