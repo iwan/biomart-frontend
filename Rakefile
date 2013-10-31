@@ -11,6 +11,7 @@ rule '.js' => '.coffee' do |t|
 end
 
 CLEAN.include "app/*.js"
+CLEAN.include "app/**/*.js"
 CLEAN.include "spec/*.js"
 FileList['**/*.coffee'].ext('js').each do |f|
   task :coffee => f
@@ -26,6 +27,9 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
     "vendor/*.js",
     "app/namespace.js",
     "app/**/*.js",
+    #"app/models/*.js",
+    #"app/collections/*.js",
+    #"app/views/*.js",
     "app/*.js",
     "spec/spec_helper.js"
   ].uniq
