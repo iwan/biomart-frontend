@@ -1,10 +1,10 @@
-describe 'Home Page View', ->
+describe 'Dashboard', ->
   model = null
   view  = null
 
   beforeEach ->
     model = new Backbone.Model { id: 1 }
-    view =  new bmf.views.HomeView model: model
+    view =  new bmf.views.Dashboard model: model
     view.render()
 
   it "has a link to Gene Retrieval", ->
