@@ -19,15 +19,17 @@ end
 Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
   Capybara.javascript_driver = :poltergeist
   t.lib_files = FileList[
+    "vendor/modernizr-*.js",
     "vendor/jquery-*.js",
     "vendor/lodash.js",
     "vendor/backbone.js",
     "vendor/*.js",
     "app/namespace.js",
+    "app/**/*.js",
     "app/*.js",
     "spec/spec_helper.js"
   ].uniq
-  t.spec_files = FileList["spec/*spec.js"]
+  t.spec_files = FileList["spec/**/*spec.js"]
 end
 
 task :test => ['coffee', 'spec']
