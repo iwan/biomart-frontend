@@ -36,6 +36,7 @@ include FileUtils
 ROOT        = Pathname(File.dirname(__FILE__))
 PUBLIC_DIR  = ROOT.join("public")
 ASSETS      = %w{ application.js application.css }
+PATHS       = %w{ app css vendor }
 
 desc 'Compile assets to build directory'
 task :compile => :cleanup do
@@ -44,9 +45,11 @@ task :compile => :cleanup do
   sprockets = Sprockets::Environment.new
   sprockets.css_compressor = YUI::CssCompressor.new
   sprockets.js_compressor  = Uglifier.new
-  sprockets.append_path(ROOT.join('app').to_s)
-  sprockets.append_path(ROOT.join('css').to_s)
-  sprockets.append_path(ROOT.join('vendor').to_s)
+  
+  PATHS.each do |path|
+    sprockets.append_path(ROOT.join("#{path}").to_s)
+  end
+  
   ASSETS.each do |asset_name|
     puts "Compiling #{asset_name}"
     asset = sprockets[asset_name]
