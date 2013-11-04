@@ -1,41 +1,38 @@
 require 'rubygems'
-require 'bundler/setup'
-require 'coffee-script'
-require 'capybara-jasmine'
-require 'capybara/poltergeist'
-require 'rake/clean'
+require 'bundler'
+require 'pathname'
+require 'fileutils'
 
-rule '.js' => '.coffee' do |t|
-  puts "Compiling #{t.source} => #{t.name}"
-  File.write(t.name, CoffeeScript.compile(File.read(t.source)))
+Bundler.require
+include FileUtils
+
+ROOT        = Pathname(File.dirname(__FILE__))
+BUILD_DIR   = ROOT.join("public")
+SOURCE_DIR  = ROOT.join("app")
+ASSETS      = %w{ application.js application.css }
+
+desc 'Compile assets to build directory'
+task :compile => :cleanup do
+  time_start = Time.now
+  Dir.mkdir BUILD_DIR if !File.exists?(BUILD_DIR)
+  sprockets = Sprockets::Environment.new
+  sprockets.css_compressor = YUI::CssCompressor.new
+  sprockets.js_compressor  = Uglifier.new
+  sprockets.append_path(ROOT.join('app').to_s)
+  sprockets.append_path(ROOT.join('css').to_s)
+  sprockets.append_path(ROOT.join('vendor').to_s)
+  ASSETS.each do |asset_name|
+    puts "Compiling #{asset_name}"
+    asset = sprockets[asset_name]
+    prefix, basename = asset.pathname.to_s
+    asset.write_to BUILD_DIR.join(asset_name)
+  end
+  time_end = Time.now
+  puts "Assets compiled in #{(time_end - time_start).to_i} seconds"
 end
 
-CLEAN.include "app/*.js"
-CLEAN.include "app/**/*.js"
-CLEAN.include "spec/*.js"
-FileList['**/*.coffee'].ext('js').each do |f|
-  task :coffee => f
+desc 'Clean up build and package directories'
+task :cleanup do
+  puts "Cleaning up build directory..."
+  FileUtils.rm_r("#{BUILD_DIR}/.", force: true)
 end
-
-Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
-  Capybara.javascript_driver = :poltergeist
-  t.lib_files = FileList[
-    "vendor/modernizr-*.js",
-    "vendor/jquery-*.js",
-    "vendor/lodash.js",
-    "vendor/backbone.js",
-    "vendor/*.js",
-    "app/namespace.js",
-    "app/**/*.js",
-    #"app/models/*.js",
-    #"app/collections/*.js",
-    #"app/views/*.js",
-    "app/*.js",
-    "spec/spec_helper.js"
-  ].uniq
-  t.spec_files = FileList["spec/**/*spec.js"]
-end
-
-task :test => ['coffee', 'spec']
-task :default => :test
-
