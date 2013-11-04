@@ -1,2 +1,4 @@
 app/**/*.js
 spec/**/*.js
+public/*.js
+public/*.css
