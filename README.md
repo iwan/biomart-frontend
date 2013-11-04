@@ -7,6 +7,8 @@ A [backbone](http://backbonejs.org/) frontend client for [biomart](https://githu
     $: git clone https://github.com/yortz/biomart-frontend.git
     $: cd biomart-frontend
     $: bundle
+    $: rake coffee
+    $: rake compile
 
 ## Test:
 
