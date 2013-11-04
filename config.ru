@@ -6,14 +6,11 @@ assets = Sprockets::Environment.new(project_root) do |env|
   env.logger = Logger.new(STDOUT)
 end
 
-assets.append_path(File.join(project_root, 'src/javascripts'))
-assets.append_path(File.join(project_root, 'src/stylesheets'))
-
-map '/lib/images' do
-   run Rack::Directory.new('src/images')
+map '/assets/images' do
+   run Rack::Directory.new('assets/images')
 end
 
-map "/lib" do
+map "/assets" do
   run assets
 end
 
