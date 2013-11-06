@@ -1,13 +1,20 @@
-class bmf.App
-  constructor: (@$el) ->
-    router = new GeneRetrievalRouter $el: @$el
-    Backbone.history.start pushState: true if !Backbone.History.started
+$ ->
+	$el = $("<div>")
+	router = new bmf.Router routes: bmf.Routes, $el: $el
+	Backbone.history.start pushState: true if !Backbone.History.started
+	#Backbone.history.navigate "", trigger: true
+	new bmf.views.Dashboard(el: $("#container"))
 
-class GeneRetrievalRouter extends Backbone.Router
-  initialize: (options) ->
-    @$el = options.$el
+  #constructor: (@$el) ->
+    #router = new GeneRetrievalRouter $el: @$el
+    #Backbone.history.start pushState: true if !Backbone.History.started
 
-  routes:
-    "gene_retrieval/:name": "gene_retrieval"
+#class GeneRetrievalRouter extends Backbone.Router
+  #initialize: (options) ->
+    #@$el = options.$el
 
-  gene_retrieval: (name) -> @$el.text "retrieving #{name} gene"
+  #routes:
+    #"gene_retrieval/:name": "gene_retrieval"
+
+  #gene_retrieval: (name) -> @$el.text "retrieving #{name} gene"
+

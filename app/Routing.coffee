@@ -3,6 +3,7 @@ bmf.Routes = Routes =
   variant_retrieval:  "variant_retrieval"
   sequence_retrieval: "sequence_retrieval"
   id_converter:       "id_converter"
+  genes:              "genes"
 
 bmf.root = root = "/"
 

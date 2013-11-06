@@ -1,16 +1,25 @@
 class bmf.views.Dashboard extends Backbone.View
+  template: JST['templates/dashboard']
+  className: 'container'
 
-  template: Mustache.compile """
-    <ul>
-      <li><a href="{{ geneRetrievalLink }}">Gene Retrieval</a></li>
-      <li><a href="{{ variantRetrievalLink }}">Variant Retrieval</a></li>
-      <li><a href="{{ sequenceRetrievalLink }}">Sequence Retrieval</a></li>
-      <li><a href="{{ idConverterLink }}">ID Converter</a></li>
-    </ul>
-  """
+  initialize: ->
+    _.bindAll this, "render"
+    @marts = new bmf.collections.Marts
+    # console.log @marts.fetch()
+    # console.log $(@el)
+
+    # Fetch the collection and call render() method
+    that = this
+    @marts.fetch success: ->
+      that.render()
+
+    # $(@el).html @template(marts: @marts.toJSON())
+    # $('container').append $(@el)
+    # @
 
   render: ->
-    @$el.html(@template(this))
+    # Fill the html with the template and the collection
+    $(@el).html @template(marts: @marts.toJSON())
     this
 
   geneRetrievalLink: =>
