@@ -7,15 +7,10 @@ class bmf.Router extends Backbone.Router
     @$el = options.$el
     for [action, route] in _(options.routes).pairs().reverse()
       @route route, action
-      
+
   render: (viewKlass, options = {}) ->
     @$el.empty().append (new viewKlass(options)).render().el
-    
+
   root: -> console.log "root" #new bmf.views.Dashboard(el: $("#container"))
-    
-  # articles: -> @render ArticlesView
-  # article: (id) -> @render ArticleView, {id}
-      
   gene_retrieval: (name) -> console.log "retrieving #{name} gene"
-  
   genes: -> console.log "genes"

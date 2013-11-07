@@ -4,13 +4,10 @@
     <div class="navbar-inner">
       <div class="container">
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="{{ geneRetrievalLink }}">Gene Retrieval</a></li>
-          <li><a href="{{ variantRetrievalLink }}">Variant Retrieval</a></li>
-          <li><a href="{{ sequenceRetrievalLink }}">Sequence Retrieval</a></li>
-          <li><a href="{{ idConverterLink }}">ID Converter</a></li>
-          <li><a href="{{ idConverterLink }}">Another</a></li>
-          
+          <li><a href="#">Gene Retrieval</a></li>
+          <li><a href="#">Variant Retrieval</a></li>
+          <li><a href="#">Sequence Retrieval</a></li>
+          <li><a href="#">ID Converter</a></li>          
         </ul>
       </div>
     </div>
