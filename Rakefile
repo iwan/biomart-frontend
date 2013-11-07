@@ -40,8 +40,11 @@ task :compile => :cleanup do
   Dir.mkdir PUBLIC_DIR if !File.exists?(PUBLIC_DIR)
 
   sprockets = Sprockets::Environment.new
-  # sprockets.css_compressor = YUI::CssCompressor.new
-  # sprockets.js_compressor  = Uglifier.new
+  
+  unless ENV['RAKE_ENV'] == "development"
+    sprockets.css_compressor = YUI::CssCompressor.new
+    sprockets.js_compressor  = Uglifier.new
+  end
 
   PATHS.each do |path|
     sprockets.append_path(ROOT.join("#{path}").to_s)
