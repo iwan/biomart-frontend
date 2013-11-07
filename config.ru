@@ -1,4 +1,5 @@
 require 'sprockets'
+require File.dirname(__FILE__) + "/app.rb"
 
 project_root = File.expand_path(File.dirname(__FILE__))
 
@@ -30,3 +31,8 @@ map "/" do
     Rack::Directory.new(@root).call(env)
   }
 end
+
+map "/api" do
+  run App
+end
+
