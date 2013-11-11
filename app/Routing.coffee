@@ -1,9 +1,10 @@
 bmf.Routes = Routes =
-  gene_retrieval:     "gene_retrieval"
-  variant_retrieval:  "variant_retrieval"
-  sequence_retrieval: "sequence_retrieval"
-  id_converter:       "id_converter"
-  genes:              "genes"
+  "gene_retrieval":     "gene_retrieval"
+  "variant_retrieval":  "variant_retrieval"
+  "sequence_retrieval": "sequence_retrieval"
+  "id_converter":       "id_converter"
+  "genes":              "genes"
+  "":                   "dashboard"
 
 bmf.root = root = "/"
 

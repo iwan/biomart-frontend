@@ -11,6 +11,9 @@ class bmf.Router extends Backbone.Router
   render: (viewKlass, options = {}) ->
     @$el.empty().append (new viewKlass(options)).render().el
 
-  root: -> console.log "root" #new bmf.views.Dashboard(el: $("#container"))
+  dashboard: ->
+    console.log "root"
+    @render bmf.views.Dashboard
+
   gene_retrieval: (name) -> console.log "retrieving #{name} gene"
   genes: -> console.log "genes"

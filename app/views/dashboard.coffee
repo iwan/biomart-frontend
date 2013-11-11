@@ -1,6 +1,5 @@
 class bmf.views.Dashboard extends Backbone.View
   template: JST['templates/dashboard']
-  className: 'container'
 
   initialize: ->
     _.bindAll this, "render"
