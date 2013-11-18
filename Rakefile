@@ -21,7 +21,7 @@ rule '.js' => '.coffee' do |t|
   File.write(t.name, CoffeeScript.compile(File.read(t.source)))
 end
 
-FileList['spec/**/*.coffee'].ext('js').each do |f|
+FileList['spec/javascripts/**/*.coffee'].ext('js').each do |f|
   task :coffee => f
 end
 
@@ -31,7 +31,7 @@ Capybara::Jasmine::TestTask.new "spec" => "coffee" do |t|
     "public/application.js",
     "spec/spec_helper.js"
   ].uniq
-  t.spec_files = FileList["spec/**/*spec.js"]
+  t.spec_files = FileList["spec/javascripts/**/*spec.js"]
 end
 
 desc 'Compile assets to build directory'
