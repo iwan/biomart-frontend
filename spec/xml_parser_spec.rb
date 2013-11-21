@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe "XML Parser" do
   XML_PATH = "spec/fixtures/dummy.xml"
+  CONTENT  = [ "Gene Vega STOCA", "Geni Alata", "GENE VEGA STICA", "Gennaro", "GENE THAT BOTHERS", "GEnI0"]
   let(:parser) { XML::Parser.new(XML_PATH) }
 
   it "has a default path" do
@@ -9,12 +10,8 @@ describe "XML Parser" do
   end
 
   it "builds the menu" do
-    menu = parser.get_element("//mart//config[@master='false']")
-    expect(menu).to eq(["Gene Vega STOCA",
-                       "Geni Alata",
-                       "GENE VEGA STICA",
-                       "Gennaro",
-                       "GENE THAT BOTHERS",
-                       "GEnI0"])
+    parser = XML::Parser.new
+    content = parser.stream
+    expect(content).to eq(CONTENT)
   end
 end
