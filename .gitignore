@@ -3,3 +3,4 @@ spec/**/*.js
 public/*.js
 public/*.css
 tmp
+spec/fixtures/GenePrioritizationPrototype.xml
