@@ -1,11 +1,18 @@
 require 'sinatra'
 require 'httparty'
+require 'json'
+require_relative 'lib/xml/parser'
 
 class App < Sinatra::Base
 
   get "/marts" do
     response = HTTParty.get("http://central.biomart.org/martservice/marts.json")
-    #puts response.body, response.code, response.message, response.headers.inspect
-    "#{response.body}"
+    response.body
+  end
+
+  get "/config" do
+    content_type :json
+    parser = XML::Parser.new
+    content = (parser.stream).to_json
   end
 end
