@@ -84,6 +84,7 @@ DEPENDENCIES
   coffee-script (~> 2.2.0)
   eco (~> 1.0.0)
   httparty
+  nokogiri
   poltergeist
   rack (~> 1.4.1)
   rake
