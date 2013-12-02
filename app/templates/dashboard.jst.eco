@@ -46,8 +46,8 @@
 
 <div class="row-fluid">
   <ol>
-    <% for mart in @marts: %>
-      <li><%= mart.name %></li>
+    <% for conf in @configuration.menu: %>
+      <li><%= conf.title %></li>
     <% end %>
   </ol>
 </div>

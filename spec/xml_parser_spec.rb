@@ -2,7 +2,15 @@ require "spec_helper"
 
 describe "XML Parser" do
   XML_PATH = "spec/fixtures/dummy.xml"
-  CONTENT  = [ "Gene Vega STOCA", "Geni Alata", "GENE VEGA STICA", "Gennaro", "GENE THAT BOTHERS", "GEnI0"]
+  CONTENT = {
+    title: "Biomart",
+    menu: [ { title: "Gene Vega STOCA" },
+            { title: "Geni Alata" },
+            { title: "GENE VEGA STICA" },
+            { title: "Gennaro" },
+            { title: "GENE THAT BOTHERS" },
+            { title: "GEnI0"} ]
+ }
   let(:parser) { XML::Parser.new(XML_PATH) }
 
   it "has a default path" do

@@ -23,7 +23,7 @@ module XML
     attr_accessor :content
 
     def initialize
-      @content = []
+      @content = {title: "Biomart", menu: []}
     end
 
     def start_element name, attributes = []
@@ -31,7 +31,7 @@ module XML
         master_attr  = attributes[11].first
         master_value = attributes[11].last
         a = Hash[attributes]
-        @content << a["displayname"] if master_value == "false"
+        @content[:menu] <<  { title: a["displayname"] } if master_value == "false"
       end
     end
 

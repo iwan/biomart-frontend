@@ -4,14 +4,15 @@ class bmf.views.Dashboard extends Backbone.View
   initialize: ->
     _.bindAll this, "render"
     @marts = new bmf.collections.Marts
+    @configuration = new bmf.models.Configuration
     # Fetch the collection and call render() method
     that = this
-    @marts.fetch success: ->
+    @configuration.fetch success: ->
       that.render()
 
   render: ->
     # Fill the html with the template and the collection
-    $(@el).html @template(marts: @marts.toJSON())
+    $(@el).html @template(configuration: @configuration.toJSON())
     # Nav links
     $(@el).find('ul li:first a').attr 'href', @geneRetrievalLink
     $(@el).find('ul li:nth-child(2) a').attr 'href', @variantRetrievalLink
