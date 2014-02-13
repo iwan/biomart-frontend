@@ -7,7 +7,23 @@ A [backbone](http://backbonejs.org/) frontend client for [biomart](https://githu
     $: git clone https://github.com/yortz/biomart-frontend.git
     $: cd biomart-frontend
     $: bundle
-    $: rake compile
+    $: bundle exec rake compile
+
+If during compilation you encounter an error similar to '"\xEF" on US-ASCII' , you have to set your shell encoding:
+
+    # Linux
+    export LANG=en_US.UTF-8
+
+    # OS X
+    export LC_CTYPE=en_US.UTF-8
+
+## Develop:
+
+Run Rack:
+
+    rackup -p 4567
+
+Try this URL: http://localhost:4567/api/marts
 
 ## Test:
 

@@ -11,4 +11,5 @@
 //= require_tree ./templates
 //= require_tree ./views
 //= require_tree ./collections
+//= require bootstrap/js/bootstrap
 //= require app

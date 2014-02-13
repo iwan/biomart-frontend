@@ -15,4 +15,9 @@ class App < Sinatra::Base
     parser = XML::Parser.new
     content = (parser.stream).to_json
   end
+
+
+  get '/xxx' do
+    "Hello World"
+  end
 end

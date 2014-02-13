@@ -1,6 +1,8 @@
 app/**/*.js
+!app/application.js
 spec/**/*.js
 public/*.js
 public/*.css
 tmp
 spec/fixtures/GenePrioritizationPrototype.xml
+futoir/

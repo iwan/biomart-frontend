@@ -18,10 +18,14 @@ end
 map "/" do
   @root = File.expand_path(File.join(File.dirname(__FILE__), "public"))
 
+  puts "-- root: #{@root}"
   run Proc.new { |env|
     # Extract the requested path from the request
     req = Rack::Request.new(env)
     index_file = File.join(@root, req.path_info, "index.html")
+
+    # env: {"GATEWAY_INTERFACE"=>"CGI/1.1", "PATH_INFO"=>"/", "QUERY_STRING"=>"", "REMOTE_ADDR"=>"127.0.0.1", "REMOTE_HOST"=>"localhost", "REQUEST_METHOD"=>"GET", ...}
+    # index_file: /Users/iwan/dev/js/biomart-frontend/public/application.js/index.html
 
     if File.exists?(index_file)
       # Rewrite to index
